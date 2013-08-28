@@ -65,7 +65,9 @@ template "#{node['postgresql']['dir']}/postgresql.conf" do
   notifies :reload, 'service[postgresql]', :immediately
 end
 
+Chef::Log.info("Justin:Creating pg_hba.conf")
 template "#{node['postgresql']['dir']}/pg_hba.conf" do
+  
   source "pg_hba.conf.erb"
   owner "postgres"
   group "postgres"
